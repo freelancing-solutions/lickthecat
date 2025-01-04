@@ -100,7 +100,7 @@ class PayfastSettings(BaseSettings):
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env.development", env_file_encoding="utf-8", extra="ignore")
     APP_NAME: str = Field(default='Last Base')
-    LOGO_URL: str = Field(default="https://last-shelter.vip/static/images/custom/logo.png")
+    LOGO_URL: str = Field(default="")
     SECRET_KEY: str = Field(default=os.environ.get("SECRET_KEY"))
     CLIENT_SECRET: str = Field(default=os.environ.get("CLIENT_SECRET"))
     MYSQL_SETTINGS: MySQLSettings = MySQLSettings()
