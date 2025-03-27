@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lick Token Dashboard</title>
+</head>
+<body>
+    <h1>Lick Token Dashboard</h1>
+    <h2>Current Balances:</h2>
+    <p><strong>Solana Wallet Balance:</strong> {{ sol_balance }} SOL</p>
+    <p><strong>LICK Token Balance:</strong> {{ lick_balance }} LICK</p>
+
+    <h2>Update Configuration:</h2>
+    <form method="POST" action="{{ url_for('lick.update_config') }}">
+        <label for="pump_fun_contract">Pump Fun Contract:</label>
+        <input type="text" name="pump_fun_contract" value="{{ config['pump_fun_contract'] }}"><br>
+
+        <label for="buyer_wallet_secret">Buyer Wallet Secret Key:</label>
+        <input type="text" name="buyer_wallet_secret" value="{{ config['buyer_wallet_secret'] }}"><br>
+
+        <label for="token_vault">Token Vault Address:</label>
+        <input type="text" name="token_vault" value="{{ config['token_vault'] }}"><br>
+
+        <label for="batch_size">Batch Size (SOL):</label>
+        <input type="number" name="batch_size" value="{{ config['batch_size'] }}"><br>
+
+        <label for="total_budget">Total Budget (SOL):</label>
+        <input type="number" name="total_budget" value="{{ config['total_budget'] }}"><br>
+
+        <label for="delay">Delay (seconds):</label>
+        <input type="number" name="delay" value="{{ config['delay'] }}"><br>
+
+        <button type="submit">Update Configuration</button>
+    </form>
+
+    <h2>Start Buying Tokens:</h2>
+    <form method="POST" action="{{ url_for('lick.start_buying') }}">
+        <button type="submit">Start Buying LICK Tokens</button>
+    </form>
+</body>
+</html>
